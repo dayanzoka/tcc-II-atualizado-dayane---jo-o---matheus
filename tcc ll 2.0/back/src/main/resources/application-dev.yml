@@ -1,0 +1,25 @@
+# Perfil de desenvolvimento local. Ative com:  --spring.profiles.active=dev
+#
+# ATENCAO: os valores abaixo sao apenas para a maquina de desenvolvimento.
+# Em qualquer ambiente com dados reais de participantes, use variaveis de
+# ambiente (perfil padrao) e um pepper gerado aleatoriamente.
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/purrbytes
+    username: purrbytes
+    password: ${PB_DB_PASSWORD:purrbytes_dev}
+
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+
+purrbytes:
+  privacidade:
+    pepper: ${PB_PRIVACY_PEPPER:pepper-de-desenvolvimento-nao-usar-em-coleta-real}
+
+logging:
+  level:
+    br.edu.purrbytes: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.orm.jdbc.bind: TRACE

@@ -1,0 +1,90 @@
+spring:
+  application:
+    name: purr-bytes-telemetria
+
+  datasource:
+    url: ${PB_DB_URL:jdbc:postgresql://localhost:5432/purrbytes}
+    username: ${PB_DB_USER:purrbytes}
+    password: ${PB_DB_PASSWORD}
+    hikari:
+      pool-name: purrbytes-pool
+      maximum-pool-size: ${PB_DB_POOL_MAX:20}
+      minimum-idle: 5
+      connection-timeout: 10000
+
+  jpa:
+    # O schema pertence ao Flyway. O Hibernate apenas confere se bate com as entidades.
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 200
+          time_zone: UTC
+        order_inserts: true
+        order_updates: true
+
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    # Os schemas sao criados pela V1; o Flyway grava seu historico em "operacao".
+    schemas: operacao
+    default-schema: operacao
+    baseline-on-migrate: false
+
+  jackson:
+    default-property-inclusion: non_null
+    # O cliente Godot manda JSON em snake_case (id_sessao, ocorrido_em, ...);
+    # esta linha e o que deixa os records Java ficarem em camelCase idiomatico
+    # (idSessao, ocorridoEm) sem precisar de @JsonProperty em cada campo.
+    property-naming-strategy: SNAKE_CASE
+    deserialization:
+      fail-on-unknown-properties: false
+
+server:
+  port: ${PB_PORT:8080}
+  error:
+    include-message: never
+    include-stacktrace: never
+  compression:
+    enabled: true
+  tomcat:
+    max-http-form-post-size: 2MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: never
+
+# ---------------------------------------------------------------------------
+# Configuracoes proprias do projeto (Eixos 5, 6 e 7)
+# ---------------------------------------------------------------------------
+purrbytes:
+  privacidade:
+    # Chave secreta (pepper) usada no HMAC-SHA-256 de e-mail e IP.
+    # NUNCA versionar. Sem ela nao ha como reidentificar um participante.
+    pepper: ${PB_PRIVACY_PEPPER}
+    # Politica de retencao dos dados de telemetria (Eixo 5).
+    retencao-telemetria-dias: ${PB_RETENCAO_DIAS:730}
+    # Tamanho maximo do texto livre digitado no terminal que e persistido.
+    limite-texto-livre: 240
+
+  ingestao:
+    # Quantidade maxima de eventos aceitos em um unico lote.
+    max-eventos-por-lote: ${PB_MAX_LOTE:500}
+    # Tolerancia de defasagem entre o relogio do cliente e o do servidor.
+    max-defasagem-relogio-minutos: 60
+
+  exportacao:
+    diretorio: ${PB_EXPORT_DIR:./dados-exportados}
+
+logging:
+  level:
+    root: INFO
+    br.edu.purrbytes: INFO
+    org.hibernate.SQL: WARN
