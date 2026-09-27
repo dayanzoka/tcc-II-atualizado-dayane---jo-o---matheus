@@ -1,0 +1,241 @@
+[gd_resource type="Theme" load_steps=15 format=3]
+
+; Tema azul escuro/cinza (pedido da Day). Comecou so no menu principal e
+; agora e compartilhado por TODAS as telas de pagina inteira que nao sao
+; gameplay: menu_principal, selecao_de_fases, editor_de_fase e
+; dashboard_telemetria -- ver ADR 0017 e o adendo do wallpaper nas outras
+; telas. Fica isolado deste .tres e nao dentro de tema_purrbytes.tres de
+; proposito -- Theme em Godot cascateia pela arvore de nos a partir de onde e
+; atribuido, entao basta apontar a raiz de cada uma dessas 4 cenas para este
+; arquivo; os OVERLAYS DE JOGO (tela_captura, caixa_puzzle, painel_cifra,
+; terminal) continuam de fora -- sao veus translucidos por cima do labirinto
+; rodando, nao telas de navegacao, e tests/teste_telas_opacas.gd ja fixa essa
+; distincao.
+
+[ext_resource type="FontFile" path="res://recursos/fontes/silkscreen_regular.woff" id="1_fonte"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(0.204, 0.231, 0.29, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.549, 0.6, 0.769, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(0.298, 0.337, 0.408, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.69, 0.729, 0.859, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.145, 0.165, 0.208, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.549, 0.6, 0.769, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94, 0.95, 0.98, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_painel_coluna"]
+; Opaco de proposito, nao so estetica: tests/teste_telas_opacas.gd exige que
+; todo PanelContainer de uma tela de pagina inteira tenha bg_color.a == 1.0 --
+; e a rede que existe desde um bug historico do projeto (texto ilegivel por
+; cima de painel translucido). Contra o wallpaper cheio de estrelas, opaco
+; tambem le melhor mesmo.
+bg_color = Color(0.129, 0.145, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_top_left = 14
+corner_radius_top_right = 14
+corner_radius_bottom_left = 14
+corner_radius_bottom_right = 14
+content_margin_left = 18.0
+content_margin_top = 16.0
+content_margin_right = 18.0
+content_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lineedit_normal"]
+bg_color = Color(0.161, 0.18, 0.231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lineedit_focus"]
+bg_color = Color(0.204, 0.231, 0.29, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.69, 0.729, 0.859, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itemlist"]
+bg_color = Color(0.161, 0.18, 0.231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itemlist_selected"]
+bg_color = Color(0.349, 0.4, 0.51, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_selected"]
+bg_color = Color(0.161, 0.18, 0.231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 0
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_unselected"]
+bg_color = Color(0.098, 0.11, 0.145, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tabcontainer_panel"]
+bg_color = Color(0.161, 0.18, 0.231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_textedit"]
+bg_color = Color(0.161, 0.18, 0.231, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("1_fonte")
+default_font_size = 10
+
+Button/styles/normal = SubResource("StyleBoxFlat_btn_normal")
+Button/styles/hover = SubResource("StyleBoxFlat_btn_hover")
+Button/styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+Button/styles/disabled = SubResource("StyleBoxFlat_btn_normal")
+Button/styles/focus = SubResource("StyleBoxFlat_btn_focus")
+Button/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(0.847, 0.867, 0.949, 1)
+Button/colors/font_disabled_color = Color(0.6, 0.62, 0.68, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+
+Label/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+Label/colors/font_outline_color = Color(0.086, 0.078, 0.157, 1)
+Label/constants/outline_size = 2
+
+RichTextLabel/colors/default_color = Color(0.937, 0.945, 0.973, 1)
+
+CheckBox/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+CheckBox/colors/font_hover_color = Color(1, 1, 1, 1)
+
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_painel_coluna")
+
+LineEdit/styles/normal = SubResource("StyleBoxFlat_lineedit_normal")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_lineedit_focus")
+LineEdit/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+LineEdit/colors/font_placeholder_color = Color(0.55, 0.58, 0.65, 1)
+LineEdit/colors/caret_color = Color(0.69, 0.729, 0.859, 1)
+LineEdit/colors/font_selected_color = Color(0.937, 0.945, 0.973, 1)
+LineEdit/colors/selection_color = Color(0.349, 0.4, 0.51, 0.65)
+
+SpinBox/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+
+ItemList/styles/panel = SubResource("StyleBoxFlat_itemlist")
+ItemList/styles/selected = SubResource("StyleBoxFlat_itemlist_selected")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_itemlist_selected")
+ItemList/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+ItemList/colors/font_selected_color = Color(1, 1, 1, 1)
+
+TabContainer/styles/panel = SubResource("StyleBoxFlat_tabcontainer_panel")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_tab_selected")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_tab_unselected")
+TabContainer/colors/font_selected_color = Color(0.937, 0.945, 0.973, 1)
+TabContainer/colors/font_unselected_color = Color(0.6, 0.62, 0.68, 1)
+
+TextEdit/styles/normal = SubResource("StyleBoxFlat_textedit")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_textedit")
+TextEdit/colors/font_color = Color(0.937, 0.945, 0.973, 1)
+TextEdit/colors/caret_color = Color(0.69, 0.729, 0.859, 1)

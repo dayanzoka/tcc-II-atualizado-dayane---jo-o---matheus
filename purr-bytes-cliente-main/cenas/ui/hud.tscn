@@ -1,0 +1,78 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://cenas/ui/hud.gd" id="1_hud"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_comandos"]
+bg_color = Color(1, 1, 1, 0.92)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+
+[node name="Hud" type="CanvasLayer"]
+layer = 1
+script = ExtResource("1_hud")
+
+[node name="Raiz" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Linha" type="HBoxContainer" parent="Raiz"]
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = -6.0
+offset_bottom = 16.0
+grow_horizontal = 2
+theme_override_constants/separation = 12
+
+[node name="Vidas" type="Label" parent="Raiz/Linha"]
+theme_override_font_sizes/font_size = 8
+text = "vidas 0"
+
+[node name="Pontuacao" type="Label" parent="Raiz/Linha"]
+theme_override_font_sizes/font_size = 8
+text = "pontos 0"
+
+[node name="Pacotes" type="Label" parent="Raiz/Linha"]
+theme_override_font_sizes/font_size = 8
+text = "pacotes 0/0"
+
+[node name="Titulo" type="Label" parent="Raiz/Linha"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
+text = ""
+horizontal_alignment = 1
+
+[node name="Protecao" type="Label" parent="Raiz/Linha"]
+theme_override_font_sizes/font_size = 8
+text = "texto claro"
+horizontal_alignment = 2
+
+[node name="Comandos" type="PanelContainer" parent="Raiz"]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_top = -20.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_comandos")
+
+[node name="Margem" type="MarginContainer" parent="Raiz/Comandos"]
+mouse_filter = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 1
+
+[node name="Lista" type="HBoxContainer" parent="Raiz/Comandos/Margem"]
+mouse_filter = 2
+theme_override_constants/separation = 5

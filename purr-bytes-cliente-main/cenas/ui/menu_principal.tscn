@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://cenas/ui/menu_principal.gd" id="1_menu"]
+[ext_resource type="SpriteFrames" path="res://recursos/arte/gato_frames.tres" id="2_gato"]
+[ext_resource type="Theme" path="res://recursos/temas/tema_telas_secundarias.tres" id="3_tema"]
+[ext_resource type="Texture2D" path="res://recursos/arte/wallpaper_menu.png" id="4_wallpaper"]
+
+[node name="MenuPrincipal" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_tema")
+script = ExtResource("1_menu")
+
+[node name="Fundo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_wallpaper")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Cartao" type="PanelContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -145.0
+offset_top = -136.0
+offset_right = 145.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Coluna" type="VBoxContainer" parent="Cartao"]
+theme_override_constants/separation = 8
+
+[node name="Titulo" type="Label" parent="Cartao/Coluna"]
+theme_override_font_sizes/font_size = 22
+text = "Purr Bytes"
+horizontal_alignment = 1
+
+[node name="Subtitulo" type="Label" parent="Cartao/Coluna"]
+theme_override_font_sizes/font_size = 8
+text = "letramento digital e criptografia"
+horizontal_alignment = 1
+
+[node name="Mascote" type="Control" parent="Cartao/Coluna"]
+custom_minimum_size = Vector2(0, 26)
+mouse_filter = 2
+
+[node name="Gato" type="AnimatedSprite2D" parent="Cartao/Coluna/Mascote"]
+position = Vector2(130, 12)
+sprite_frames = ExtResource("2_gato")
+animation = &"parado"
+autoplay = "parado"
+
+[node name="Botoes" type="VBoxContainer" parent="Cartao/Coluna"]
+theme_override_constants/separation = 4
+
+[node name="EscolherFase" type="Button" parent="Cartao/Coluna/Botoes"]
+theme_override_font_sizes/font_size = 10
+text = "escolher fase"
+
+[node name="CriarFase" type="Button" parent="Cartao/Coluna/Botoes"]
+theme_override_font_sizes/font_size = 10
+text = "criar fase"
+
+[node name="SubirFase" type="Button" parent="Cartao/Coluna/Botoes"]
+theme_override_font_sizes/font_size = 10
+text = "subir fase"
+
+[node name="Telemetria" type="Button" parent="Cartao/Coluna/Botoes"]
+theme_override_font_sizes/font_size = 10
+text = "telemetria"
+
+[node name="Sair" type="Button" parent="Cartao/Coluna/Botoes"]
+theme_override_font_sizes/font_size = 10
+text = "sair"
+
+[node name="DialogoDeImportacao" type="FileDialog" parent="."]
+title = "subir fase (.json)"
+initial_position = 2
+size = Vector2i(460, 300)
+ok_button_text = "abrir"
+file_mode = 0
+access = 2
+filters = PackedStringArray("*.json ; fase do Purr Bytes")
+
+[node name="Aviso" type="AcceptDialog" parent="."]
+title = "subir fase"
+initial_position = 2
+size = Vector2i(360, 160)
+dialog_autowrap = true

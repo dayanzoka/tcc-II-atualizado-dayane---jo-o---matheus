@@ -1,0 +1,29 @@
+; TileSet do labirinto.
+;
+; A camada de dados customizados "solido" e a fonte da verdade sobre o que e
+; parede -- nao o formato do tile, nao a cor, nao a posicao no atlas. Tanto o
+; AStarGrid2D (set_point_solid) quanto a colisao leem dela, entao mapa e
+; navegacao nao podem divergir: e um dado so.
+;
+; Marco 0 usa um atlas placeholder de 2 tiles (piso e parede). Trocar pela pixel
+; art definitiva e trocar a textura e manter as coordenadas do atlas.
+
+[gd_resource type="TileSet" load_steps=3 format=3]
+
+[ext_resource type="Texture2D" path="res://recursos/arte/tiles_placeholder.png" id="1_tiles"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_labirinto"]
+texture = ExtResource("1_tiles")
+texture_region_size = Vector2i(16, 16)
+0:0/0 = 0
+0:0/0/custom_data_0 = false
+1:0/0 = 0
+1:0/0/custom_data_0 = true
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[resource]
+tile_size = Vector2i(16, 16)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "solido"
+custom_data_layer_0/type = 1
+sources/0 = SubResource("TileSetAtlasSource_labirinto")

@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://cenas/ui/selecao_de_fases.gd" id="1_selecao"]
+[ext_resource type="Theme" path="res://recursos/temas/tema_telas_secundarias.tres" id="2_tema"]
+[ext_resource type="Texture2D" path="res://recursos/arte/wallpaper_telas_secundarias.png" id="3_wallpaper"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_painel"]
+bg_color = Color(0.129, 0.145, 0.188, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.443, 0.549, 0.7)
+
+[node name="SelecaoDeFases" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_tema")
+script = ExtResource("1_selecao")
+
+[node name="Fundo" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_wallpaper")
+expand_mode = 1
+stretch_mode = 6
+texture_filter = 2
+
+[node name="Raiz" type="PanelContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_painel")
+
+[node name="Margem" type="MarginContainer" parent="Raiz"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 8
+
+[node name="Coluna" type="VBoxContainer" parent="Raiz/Margem"]
+theme_override_constants/separation = 6
+
+[node name="Titulo" type="Label" parent="Raiz/Margem/Coluna"]
+theme_override_colors/font_color = Color(0.937, 0.945, 0.973, 1)
+theme_override_font_sizes/font_size = 14
+text = "escolher fase"
+horizontal_alignment = 1
+
+[node name="Corpo" type="HBoxContainer" parent="Raiz/Margem/Coluna"]
+size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="Lista" type="ItemList" parent="Raiz/Margem/Coluna/Corpo"]
+custom_minimum_size = Vector2(190, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.937, 0.945, 0.973, 1)
+theme_override_font_sizes/font_size = 9
+
+[node name="Detalhe" type="RichTextLabel" parent="Raiz/Margem/Coluna/Corpo"]
+custom_minimum_size = Vector2(220, 0)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_colors/default_color = Color(0.937, 0.945, 0.973, 1)
+theme_override_font_sizes/normal_font_size = 8
+theme_override_font_sizes/bold_font_size = 8
+bbcode_enabled = true
+
+[node name="SeparadorAcoes" type="HSeparator" parent="Raiz/Margem/Coluna"]
+
+[node name="Rodape" type="Label" parent="Raiz/Margem/Coluna"]
+theme_override_colors/font_color = Color(0.42, 0.78, 0.48, 1)
+theme_override_font_sizes/font_size = 8
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Acoes" type="HBoxContainer" parent="Raiz/Margem/Coluna"]
+theme_override_constants/separation = 6
+
+[node name="Jogar" type="Button" parent="Raiz/Margem/Coluna/Acoes"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 9
+text = "jogar"
+
+[node name="Editar" type="Button" parent="Raiz/Margem/Coluna/Acoes"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 9
+text = "editar"
+
+[node name="Exportar" type="Button" parent="Raiz/Margem/Coluna/Acoes"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 9
+text = "exportar"
+
+[node name="Excluir" type="Button" parent="Raiz/Margem/Coluna/Acoes"]
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.92, 0.42, 0.38, 1)
+theme_override_colors/font_hover_color = Color(0.92, 0.42, 0.38, 1)
+theme_override_colors/font_pressed_color = Color(0.92, 0.42, 0.38, 1)
+theme_override_font_sizes/font_size = 9
+text = "excluir"
+
+[node name="Voltar" type="Button" parent="Raiz/Margem/Coluna/Acoes"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 9
+text = "voltar"
+
+[node name="ConfirmacaoDeExclusao" type="ConfirmationDialog" parent="."]
+title = "confirmar exclusao"
+initial_position = 2
+size = Vector2i(300, 120)
+ok_button_text = "excluir"
+dialog_text = ""
+dialog_autowrap = true
+
+[node name="DialogoDeExportacao" type="FileDialog" parent="."]
+title = "exportar fase (.json)"
+initial_position = 2
+size = Vector2i(460, 300)
+ok_button_text = "salvar"
+access = 2
+filters = PackedStringArray("*.json ; fase do Purr Bytes")

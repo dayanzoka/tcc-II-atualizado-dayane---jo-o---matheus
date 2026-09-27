@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://cenas/ui/tela_captura.gd" id="1_captura"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_opaco"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+content_margin_left = 6.0
+content_margin_top = 5.0
+content_margin_right = 6.0
+content_margin_bottom = 5.0
+
+[node name="TelaCaptura" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_captura")
+
+[node name="Raiz" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Fundo" type="ColorRect" parent="Raiz"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.145, 0.129, 0.106, 0.72)
+
+[node name="Painel" type="PanelContainer" parent="Raiz"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_opaco")
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -140.0
+offset_top = -40.0
+offset_right = 140.0
+offset_bottom = 40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Coluna" type="VBoxContainer" parent="Raiz/Painel"]
+theme_override_constants/separation = 6
+
+[node name="Mensagem" type="Label" parent="Raiz/Painel/Coluna"]
+theme_override_font_sizes/font_size = 12
+text = "pacote interceptado"
+horizontal_alignment = 1
+
+[node name="Explicacao" type="Label" parent="Raiz/Painel/Coluna"]
+theme_override_font_sizes/font_size = 8
+text = ""
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Dica" type="Label" parent="Raiz/Painel/Coluna"]
+modulate = Color(1, 1, 1, 0.6)
+theme_override_font_sizes/font_size = 7
+text = "enter para continuar"
+horizontal_alignment = 1
+
+[node name="Temporizador" type="Timer" parent="."]
+one_shot = true

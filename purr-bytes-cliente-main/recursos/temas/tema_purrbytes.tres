@@ -1,0 +1,230 @@
+[gd_resource type="Theme" load_steps=16 format=3]
+
+[ext_resource type="FontFile" path="res://recursos/fontes/silkscreen_regular.woff" id="1_fonte"]
+
+; Paleta "fofa" amarelo pastel + branco + preto (pedido da Day). A antiga
+; paleta laranja/creme (Fase A) foi totalmente substituida aqui -- as cores
+; de MECANICA de jogo (aneis dos cachorros, legenda da cifra, estados de
+; porta/pacote) NAO vivem neste arquivo e continuam intocadas.
+;
+; amarelo pastel normal:  #FFD97B
+; amarelo pastel hover:   #FFE9AD (mais claro, para dar feedback ao passar o mouse)
+; amarelo pastel pressed: #ECBA4D (mais escurinho, para dar feedback de clique)
+; preto suave (texto/bordas): #25211B (preto quente, nunca preto puro -- combina
+;   mais com o estilo "fofo" do que #000000)
+; branco puro e branco cremoso (#FFFBF2) para fundos de campo e paineis
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_normal"]
+bg_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_hover"]
+bg_color = Color(1, 0.914, 0.678, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_pressed"]
+bg_color = Color(0.925, 0.729, 0.302, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_disabled"]
+bg_color = Color(0.89, 0.87, 0.82, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 10.0
+content_margin_top = 5.0
+content_margin_right = 10.0
+content_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_focus"]
+bg_color = Color(0, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.145, 0.129, 0.106, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+content_margin_left = 8.0
+content_margin_top = 6.0
+content_margin_right = 8.0
+content_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lineedit_normal"]
+bg_color = Color(1, 0.984, 0.949, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lineedit_focus"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.925, 0.729, 0.302, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 3.0
+content_margin_right = 6.0
+content_margin_bottom = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itemlist"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_itemlist_selected"]
+bg_color = Color(1, 0.914, 0.678, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_left = 4
+corner_radius_bottom_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_selected"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 0
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab_unselected"]
+bg_color = Color(1, 0.949, 0.859, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tabcontainer_panel"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_bottom_left = 8
+corner_radius_bottom_right = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_textedit"]
+bg_color = Color(1, 0.984, 0.949, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.851, 0.482, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+content_margin_left = 6.0
+content_margin_top = 4.0
+content_margin_right = 6.0
+content_margin_bottom = 4.0
+
+[resource]
+default_font = ExtResource("1_fonte")
+default_font_size = 10
+
+Button/styles/normal = SubResource("StyleBoxFlat_btn_normal")
+Button/styles/hover = SubResource("StyleBoxFlat_btn_hover")
+Button/styles/pressed = SubResource("StyleBoxFlat_btn_pressed")
+Button/styles/disabled = SubResource("StyleBoxFlat_btn_disabled")
+Button/styles/focus = SubResource("StyleBoxFlat_btn_focus")
+Button/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+Button/colors/font_hover_color = Color(0.145, 0.129, 0.106, 1)
+Button/colors/font_pressed_color = Color(0.145, 0.129, 0.106, 1)
+Button/colors/font_disabled_color = Color(0.55, 0.52, 0.47, 1)
+Button/colors/font_focus_color = Color(0.145, 0.129, 0.106, 1)
+
+Label/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+
+RichTextLabel/colors/default_color = Color(0.145, 0.129, 0.106, 1)
+
+CheckBox/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+CheckBox/colors/font_hover_color = Color(0.145, 0.129, 0.106, 1)
+
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_panel")
+
+LineEdit/styles/normal = SubResource("StyleBoxFlat_lineedit_normal")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_lineedit_focus")
+LineEdit/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+LineEdit/colors/font_placeholder_color = Color(0.6, 0.56, 0.48, 1)
+LineEdit/colors/caret_color = Color(0.925, 0.729, 0.302, 1)
+LineEdit/colors/font_selected_color = Color(0.145, 0.129, 0.106, 1)
+LineEdit/colors/selection_color = Color(1, 0.851, 0.482, 0.55)
+
+SpinBox/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+
+ItemList/styles/panel = SubResource("StyleBoxFlat_itemlist")
+ItemList/styles/selected = SubResource("StyleBoxFlat_itemlist_selected")
+ItemList/styles/selected_focus = SubResource("StyleBoxFlat_itemlist_selected")
+ItemList/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+ItemList/colors/font_selected_color = Color(0.145, 0.129, 0.106, 1)
+
+TabContainer/styles/panel = SubResource("StyleBoxFlat_tabcontainer_panel")
+TabContainer/styles/tab_selected = SubResource("StyleBoxFlat_tab_selected")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxFlat_tab_unselected")
+TabContainer/colors/font_selected_color = Color(0.145, 0.129, 0.106, 1)
+TabContainer/colors/font_unselected_color = Color(0.42, 0.38, 0.32, 1)
+
+TextEdit/styles/normal = SubResource("StyleBoxFlat_textedit")
+TextEdit/styles/focus = SubResource("StyleBoxFlat_textedit")
+TextEdit/colors/font_color = Color(0.145, 0.129, 0.106, 1)
+TextEdit/colors/caret_color = Color(0.925, 0.729, 0.302, 1)

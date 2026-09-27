@@ -1,0 +1,88 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Script" path="res://cenas/base/fase_base.gd" id="1_fase"]
+[ext_resource type="TileSet" path="res://recursos/tilesets/labirinto.tres" id="2_tileset"]
+[ext_resource type="PackedScene" path="res://cenas/base/jogador.tscn" id="3_jogador"]
+[ext_resource type="PackedScene" path="res://cenas/base/cachorro.tscn" id="4_cachorro"]
+[ext_resource type="PackedScene" path="res://cenas/base/terminal.tscn" id="5_terminal"]
+[ext_resource type="PackedScene" path="res://cenas/ui/hud.tscn" id="6_hud"]
+[ext_resource type="PackedScene" path="res://cenas/ui/tela_captura.tscn" id="7_captura"]
+[ext_resource type="PackedScene" path="res://cenas/base/painel_cifra.tscn" id="8_painel_cifra"]
+[ext_resource type="PackedScene" path="res://cenas/base/caixa_puzzle.tscn" id="9_caixa"]
+[ext_resource type="Script" path="res://cenas/base/porta.gd" id="10_porta"]
+[ext_resource type="PackedScene" path="res://cenas/base/painel_pause.tscn" id="11_pause"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_saida"]
+size = Vector2(14, 14)
+
+[node name="FaseBase" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_fase")
+
+[node name="Labirinto" type="TileMapLayer" parent="."]
+tile_set = ExtResource("2_tileset")
+
+[node name="Marcadores" type="Node2D" parent="."]
+
+[node name="PontoDeEntrada" type="Marker2D" parent="Marcadores"]
+position = Vector2(24, 24)
+
+[node name="PontoDeSaida" type="Area2D" parent="Marcadores"]
+position = Vector2(120, 88)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("10_porta")
+
+[node name="Colisao" type="CollisionShape2D" parent="Marcadores/PontoDeSaida"]
+shape = SubResource("RectangleShape2D_saida")
+
+[node name="Pacotes" type="Node2D" parent="Marcadores"]
+
+[node name="Regioes" type="Node2D" parent="Marcadores"]
+
+[node name="Jogador" parent="." instance=ExtResource("3_jogador")]
+position = Vector2(24, 24)
+
+[node name="Cachorro" parent="." instance=ExtResource("4_cachorro")]
+position = Vector2(120, 24)
+
+[node name="CameraJogador" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+
+[node name="Hud" parent="." instance=ExtResource("6_hud")]
+
+[node name="Terminal" parent="." instance=ExtResource("5_terminal")]
+
+[node name="PainelCifra" parent="." instance=ExtResource("8_painel_cifra")]
+
+[node name="CaixaPuzzle" parent="." instance=ExtResource("9_caixa")]
+
+[node name="TelaCaptura" parent="." instance=ExtResource("7_captura")]
+
+[node name="PainelDePause" parent="." instance=ExtResource("11_pause")]
+
+[node name="AvisoDeConfiguracao" type="CanvasLayer" parent="."]
+layer = 4
+
+[node name="Fundo" type="ColorRect" parent="AvisoDeConfiguracao"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.145, 0.129, 0.106, 0.94)
+
+[node name="Texto" type="Label" parent="AvisoDeConfiguracao/Fundo"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+text = "fase_base.tscn e a cena pai e nao roda sozinha."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3

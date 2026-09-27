@@ -1,0 +1,16 @@
+# Fim de linha LF no repositorio, independente do sistema de quem clonar.
+# Sem isto, o autocrlf do Git para Windows reescreve .tscn e .tres inteiros e
+# todo diff de cena vira ruido -- justamente os arquivos onde a revisao precisa
+# enxergar a mudanca de uma propriedade so.
+* text=auto eol=lf
+
+*.gd    text eol=lf
+*.tscn  text eol=lf
+*.tres  text eol=lf
+*.godot text eol=lf
+*.cfg   text eol=lf
+*.uid   text eol=lf
+*.md    text eol=lf
+
+*.png binary
+*.svg text eol=lf
